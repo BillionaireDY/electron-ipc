@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>dy</h1>
+    <button id="btn_send">send action</button>
+    <button id="btn_send_sync">send sync action</button>
+    <button id="btn_remote">remote action</button>
+    <p id="response">
+        ....
+    </p>
+    <script>
+        const {ipcRenderer, remote, dialog} = require('electron');
+
+        // check platform Win/Mac/Linux?
+        console.log(process.versions);
+        console.log(process.type);
+        
+        const btnSend = document.getElementById('btn_send');
+        btnSend.addEventListener('click', () => {
+            console.log('btn_send clicked');
+            ipcRenderer.send('coffee', 'espresso'); // channel / paylod
+        });
+
+        ipcRenderer.on('donut', (event, payload) => {
+            console.log(payload);
+        });
+
+
+        const btnSendSync = document.getElementById('btn_send_sync');
+        btnSendSync.addEventListener('click', () => {
+            console.log('btn_send_sync clicked');
+            const response = ipcRenderer.sendSync('food'); // channel / paylod
+            console.log(response);
+        });
+
+        // remote 는 메인프로세스의 라이브러리를 사용가능 
+        // 주로 복잡하지 않은 단발성 작업에 적합.
+        const btnRemote = document.getElementById('btn_remote');
+        btnRemote.addEventListener('click', () => {
+            console.log('btn_remote clicked');
+            
+            const {dialog} = remote;
+            const win = remote.getCurrentWindow();
+
+            dialog.showMessageBox(win, {
+                message: 'remote message',
+                detail: 'remote message...'
+            });
+        });
+    </script>
+</body>
+</html>

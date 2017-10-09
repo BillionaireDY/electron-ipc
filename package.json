@@ -1,0 +1,19 @@
+{
+  "name": "electron-ipc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^1.7.6"
+  },
+  "devDependencies": {
+    "electron-builder": "^19.29.2",
+    "electron-packager": "^9.1.0"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
