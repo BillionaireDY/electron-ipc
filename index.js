@@ -33,7 +33,8 @@ app.on('ready', () => {
     });
 
     ipcMain.on('food', (event, payload) => {
-        shell.openExternal('https://naver.com');
+        // shell.openExternal('https://naver.com');
+        // sync action
         shell.beep();
         event.returnValue = 'give me some food';
     });
@@ -47,7 +48,7 @@ app.on('ready', () => {
  * or
  * 
  * 빌더로 생성시 icon 
- * npm install electron-builder
+ * npm install electron-builder -D
  * electron-builder 는 default 값으로 /build 의 리소스를 확인. 
  * Mac 에서는 apple developer에서 등록하고 돈내고..하는 과정이필요하다. 
  * 
