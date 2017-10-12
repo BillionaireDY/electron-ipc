@@ -1,5 +1,5 @@
 ## Electron-ipc
-### how to electron-app commuicate
+### studying how to electron-app commuicate
 
 
 install npm packages
